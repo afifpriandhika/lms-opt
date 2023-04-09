@@ -21,13 +21,13 @@ class UserSeeder extends Seeder
                 'name'=>'User',
                 'email'=>'user@gmail.com',
                 'type'=>0,
-                'password'=> Hash::make(1234567890),
+                'password'=> Hash::make(11223344),
             ],
             [
                 'name'=>'Staff',
                 'email'=>'staff@gmail.com',
                 'type'=>1,
-                'password'=> Hash::make(1234567890),
+                'password'=> Hash::make(11223344),
             ],
         ];
     

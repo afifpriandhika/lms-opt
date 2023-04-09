@@ -51,6 +51,7 @@ class CourseController extends Controller
             'user_id' => Auth::user()->id,
             'name' => $request->name,
             'description' => $request->description,
+            'enrollment_key' => $request->enrollment,
         ]);
         return redirect ('/admin/manageCourse')->with('success','Materi baru berhasil dibuat!');
     }
@@ -91,6 +92,7 @@ class CourseController extends Controller
         $course = Course::find($id);
         $course->name = $request->name;
         $course->description = $request->description;
+        $course->enrollment_key = $request->enrollment;
         $course->save();
         return back()->with(['success' => 'Data Berhasil Diubah']);
     }

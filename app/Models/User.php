@@ -8,6 +8,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Database\Eloquent\Casts\Attribute;
+use App\Models\EnrolledCourse;
+use App\Models\Course;
 
 class User extends Authenticatable
 {
@@ -34,6 +36,15 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
+
+    public function enrolledCourse()
+    {
+        return $this->belongsTo(EnrolledCourse::class);
+    }
+    public function course()
+    {
+        return $this->belongsTo(Course::class);
+    }
 
     /**
      * The attributes that should be cast.

@@ -119,18 +119,25 @@
                 </div>
             </li> --}}
 
+            <hr class="sidebar-divider d-none d-md-block">
+
             <!-- Nav Item - Charts -->
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('course') }}">
                     <i class="fas fa-fw fa-book"></i>
-                    <span>Mata Pelajaran</span>
+                    <span>Semua Mata Pelajaran</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('enrolledCourse') }}">
+                    <i class="fas fa-fw fa-book"></i>
+                    <span>Mata Pelajaran Diambil</span>
                 </a>
             </li>
 
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
-
             <!-- Sidebar Toggler (Sidebar) -->
             <div class="text-center d-none d-md-inline">
                 <button class="rounded-circle border-0" id="sidebarToggle"></button>

@@ -59,7 +59,7 @@
     <!-- Update Modal -->
 @foreach($courses as $course)
 <div class="modal fade" id="update{{$course->id}}" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
         <div class="modal-header">
             <h4 class="modal-title fs-5" id="updateModalLabel">Update Mata Pelajaran</h4>
@@ -69,15 +69,21 @@
                 {{ method_field('PATCH') }}
                 @csrf
                 <div class="mb-3 row">
-                    <label for="courseName" class="col-sm-2 col-form-label text-dark">Judul Materi</label>
-                    <div class="col-sm-10">
+                    <label for="courseName" class="col-sm-3 col-form-label text-dark">Nama Mata Pelajaran</label>
+                    <div class="col-sm">
                         <input type="text" class="form-control" id="courseName" name="name" value="{{$course->name}}">
                     </div>
                 </div>
                 <div class="mb-3 row">
-                    <label for="description" class="col-sm-2 col-form-label text-dark">Deskripsi</label>
-                    <div class="col-sm-10">
+                    <label for="description" class="col-sm-3 col-form-label text-dark">Deskripsi</label>
+                    <div class="col-sm">
                         <textarea class="form-control" id="description" name="description" rows="3">{{$course->description}}</textarea>
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label for="courseName" class="col-sm-3 col-form-label text-dark">Enrollment Key</label>
+                    <div class="col-sm">
+                        <input type="text" class="form-control" id="courseName" name="enrollment" value="{{$course->enrollment_key}}">
                     </div>
                 </div>
             </div>

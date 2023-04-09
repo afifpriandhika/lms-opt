@@ -30,9 +30,13 @@ Route::middleware(['auth', 'user-access:student'])->group(function () {
     Route::patch('/profile/update/password/{id}', [App\Http\Controllers\User\ProfileController::class, 'updatePassword'])->name('profileUpdatePassword');
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::get('/course', [App\Http\Controllers\User\StudentCourseController::class, 'index'])->name('course');
-    Route::get('/course/{id}/content', [App\Http\Controllers\User\StudentCourseController::class, 'show'])->name('course.detail');
+    Route::get('/course/detail/{id}', [App\Http\Controllers\User\StudentCourseController::class, 'show'])->name('course.detail');
     Route::get('/course/content/detail/{id}', [App\Http\Controllers\User\StudentContentController::class, 'show'])->name('content.detail');
     Route::get('/content/{id}/view_pdf', [App\Http\Controllers\User\StudentContentController::class, 'pdfView'])->name('content.pdf');
+    Route::post('/course/enroll/{id}', [App\Http\Controllers\User\StudentCourseController::class, 'enroll'])->name('enrollCourse');
+    Route::get('/course/enrolled', [App\Http\Controllers\User\EnrolledCourseController::class, 'index'])->name('enrolledCourse');
+    Route::get('/course/unenroll/{id}', [App\Http\Controllers\User\EnrolledCourseController::class, 'destroy'])->name('unenrollCourse');
+
 });
 
 

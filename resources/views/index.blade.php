@@ -84,7 +84,11 @@
                                 {{ Auth::user()->name }}
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Dashboard</a></li>
+                                @if(Auth::user()->type===1)
+                                <li><a class="dropdown-item" href="/admin/home">Dashboard</a></li>
+                                @else
+                                <li><a class="dropdown-item" href="/home">Dashboard</a></li>
+                                @endif
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>

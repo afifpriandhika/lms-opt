@@ -5,8 +5,10 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Course;
+use App\Models\EnrolledCourse;
 use App\Models\Content;
 use Auth;
+use DB;
 
 class StudentCourseController extends Controller
 {
@@ -62,6 +64,8 @@ class StudentCourseController extends Controller
         return view ('user.content',['courses' => $courses],['contents' => $contents]);
     }
 
+    
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -94,5 +98,32 @@ class StudentCourseController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function enroll(Request $request, $id)
+    {
+        $enrollment = $request->enrollment;
+        $course = Course::find($id);
+        $enrolled = DB::table('enrolled_courses')
+                    ->where('user_id', '=', Auth::user()->id)
+                    ->where('course_id', '=', $course->id)
+                    ->count();
+        // dd($enrolled);
+        if($enrollment == $course->enrollment_key){
+            if ($enrolled == 0){
+                    $enrolled = EnrolledCourse::create([
+                        'user_id' => Auth::user()->id,
+                        'course_id' => $course->id
+                ]);
+                return redirect('/course')->with('success',"mata pelajaran berhasil diambil");
+            }
+            else{
+                return redirect('/course')->with('warning',"mata pelajaran sudah diambil");
+                
+            }
+        }
+        else{
+            return redirect('/course')->with('error',"enrollment key salah");
+        }
     }
 }
